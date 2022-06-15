@@ -1,0 +1,29 @@
+{
+    "$schema": "https://raw.githubusercontent.com/Azure/azure-devtestlab/master/schemas/2016-11-28/dtlArtifacts.json",
+    "title": "Gitlab Runner for Linux (apt-get)",
+    "publisher": "Publicis Sapient",
+    "description": "Downloads and installs the GitLab Runner, and registers with the specified Gitlab instance",
+    "tags": [
+      "GitLab",
+      "Build",
+      "CI",
+      "Linux"
+    ],
+    "iconUri": "https://gitlab.com/assets/favicon-72a2cad5025aa931d6ea56c3201d1f18e68a8cd39788c7c80d5b2b82aa5143ef.png",
+    "targetOsType": "Linux",
+    "parameters": {
+      "gitLabUrl": {
+        "type": "string",
+        "displayName": "Url of the gitlab instance",
+        "description": "The Gitlab instance to add the runner to. This is the value in your Gitlab URL: e.g. https://gitlab.com/myorg."
+      },
+      "registrationToken": {
+        "type": "securestring",
+        "displayName": "Runner Registration Token",
+        "description": "The token to register the runner to gitlab at the correct scope. This can be instance, group or project scoped"
+      }
+    },
+    "runCommand": {
+      "commandToExecute": "[concat('sh linux_install_gitlabrunner_v1.sh ', parameters('gitLabUrl'), ' ', parameters('registrationToken'))]"
+    }
+  }
