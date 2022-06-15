@@ -8,10 +8,13 @@ echo "Starting Gitlab Runner Installation"
 
 echo "Using APT package manager."
 
-echo "Updating every installed package"
-apt-get -y update
+echo "set repo location"
+curl -L "https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.deb.sh" | sudo bash
 
-apt-get -y install gitlab-runner
+echo "Updating every installed package"
+sudo apt-get -y update
+
+sudo apt-get -y install gitlab-runner
 
 echo "Registering Runner"
 
